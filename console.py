@@ -128,7 +128,7 @@ class HBNBCommand(cmd.Cmd):
             not_exist = False
             try:
                 eval(my_args[0])
-            except:
+            except NameError:
                 not_exist = True
             if not_exist:
                 print("** class doesn't exist **")

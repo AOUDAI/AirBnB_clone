@@ -40,4 +40,3 @@ class FileStorage:
 
         except FileNotFoundError:
             pass  # File doesn't exist yet, no need to do anything
-
