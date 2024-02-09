@@ -1,12 +1,10 @@
 header {
-    position: absolute;
     height: 70px;
     width: 100%;
     background-color: white;
     border-bottom: 1px solid #CCCCCC;
 }
 header div {
-    position: absolute;
     width: 142px;
     height: 60px;
     background-image: url(../images/logo.png);
