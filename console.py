@@ -10,6 +10,7 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+import sys
 
 
 class HBNBCommand(cmd.Cmd):
@@ -23,6 +24,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, args):
         """Quit command to exit the program\n"""
+        print()
         return True
 
     def emptyline(self):
@@ -32,14 +34,34 @@ class HBNBCommand(cmd.Cmd):
         """Creates a new instance of BaseModel."""
         if not args:
             print("** class name missing **")
-        else:
-            class_name = args.split()[0]
-            try:
-                my_instance = eval(class_name)()
-                storage.save()
-                print(my_instance.id)
-            except NameError:
-                print("** class doesn't exist **")
+            return
+
+        args = args.split()
+        class_name = args[0]
+        try:
+            my_instance = eval(class_name)()
+        except NameError:
+            print("** class doesn't exist **")
+            return
+            
+        for parameter in args[1:]:
+            name, value = parameter.split("=")
+            test = value
+            if test[0] == '"':
+                value = value.strip('"').replace('_', ' ')
+
+            else:
+                if test[0] == '-':
+                    test = test.lstrip('-') 
+                if ('.' in test) and (test.replace('.', '', 1).isdigit()):
+                    value = float(value)
+                else:
+                    value = int(value)
+
+            my_instance.__dict__[name] = value
+  
+        storage.save()
+        print(my_instance.id)           
 
     def do_show(self, args):
         """Prints the string representation of an instance"""

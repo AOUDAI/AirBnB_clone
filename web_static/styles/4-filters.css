@@ -18,3 +18,7 @@ button {
     top: calc(50% - 24px);
     right: 30px;
 }
+
+.filters button:hover {
+    opacity: 90%;
+}
