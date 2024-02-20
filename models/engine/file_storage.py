@@ -21,18 +21,18 @@ class FileStorage:
 
     def new(self, obj):
         class_name = f"{obj.__class__.__name__}.{obj.id}"
-        FileStorage.__objects[class_name] = obj
+        self.__objects[class_name] = obj
 
     def save(self):
-        with open(FileStorage.__file_path, "w") as file:
-            my_dict = FileStorage.__objects
+        with open(self.__file_path, "w") as file:
+            my_dict = self.__objects
             my_dict = {key: my_dict[key].to_dict() for key in my_dict.keys()}
             json.dump(my_dict, file)
 
     def reload(self):
         """Deserializes the JSON file to __objects (only if the file exists)"""
         try:
-            with open(FileStorage.__file_path, 'r') as file:
+            with open(self.__file_path, 'r') as file:
                 data = json.load(file)
             for obj in data.values():
                 class_name = obj["__class__"]
