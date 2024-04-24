@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-    
+    justify-content: center;
     max-width: 1000px;
     margin: 30px auto;
 }

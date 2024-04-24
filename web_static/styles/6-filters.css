@@ -1,9 +1,4 @@
-.container {
-    max-width: 1000px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    justify-content: center;
-}
+
 .filters {
     position: relative;
     display: flex;
@@ -39,10 +34,12 @@
 
 .amenities:hover .popover {
     display: block;
+    list-style-type: none;
 }
 
 .locations:hover .popover {
     display: block;
+    list-style-type: none;
 }
 
 .filters button {
@@ -66,9 +63,11 @@ h3 {
     margin-top: 12px;
     margin-bottom: 5px;
     font-weight: 600;
+    text-align: center;
 }
 
 h4 {
+    text-align: center;
     margin-top: 5px;
     font-weight: 400;
     font-size: 14px;

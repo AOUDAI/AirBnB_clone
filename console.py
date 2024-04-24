@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """Defines the HBNBCommand class."""
+from models.engine.file_storage import FileStorage
 import cmd
 from models.base_model import BaseModel
 from models import storage
-from models.engine.file_storage import FileStorage
 from models.city import City
 from models.amenity import Amenity
 from models.place import Place
